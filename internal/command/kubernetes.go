@@ -327,6 +327,7 @@ func (i *KubernetesContainerImage) Finalize(packageName string) (ret error) {
 				"fyne-cross-s3", "upload-directory",
 				volume.JoinPathContainer(i.Runner.vol.TmpDirContainer(), i.GetID(), packageName), i.Runner.s3Path+"/"+packageName+".tar.xz"),
 		)
+		packageName += ".tar.xz"
 	} else {
 		ret = i.Run(i.Runner.vol, Options{},
 			AddAWSParameters(i.Runner.aws,
